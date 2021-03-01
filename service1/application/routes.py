@@ -17,14 +17,14 @@ def generate_view():
     return render_template('generate.html', title= 'Creature Name')
 
 @app.route('/generate', methods=['GET'])
-def generate_team():
+def generate_creature():
     Species = requests.get('http://service2:5001/get/species')
     Size = requests.get('http://service3:5002/get/size')
-    Features = requests.post('http://service4:5003/get/slogan', data=Species)
+    Features = requests.post('http://service4:5003/get/features', data=Species)
 
     db_data = Creature(Species=Species.text, Size=Size.text, Features=Features.text)
     db.session.add(db_data)
     db.session.commit()
-    teams_record=db_data.query.all()
+    Creature_record=db_data.query.all()
 
     return render_template('generate.html', title= 'Creature Name')

@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+{% block body_content %}
+<p><h1>All Creatures!</h1></p>
+{% if creatures %}
+{% for creature in creatures %}
+	<div>
+		<h3>{{ creature.title }}</h3>
+		<p> 
+		- Creature Name:</b> {{ creature.species }} {{ creature.size }}
+		- Features:</b> {{ creature.features }}
+		</p>
+	</div>
+{% endfor %}
+{% endif %}
+{% endblock %}
