@@ -1,0 +1,10 @@
+- hosts: manager
+  become: yes
+  roles:
+  - dockerswarm
+  - manager
+- hosts: worker
+  become: yes
+  roles:
+  - dockerswarm
+  - worker
